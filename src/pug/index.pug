@@ -1,4 +1,12 @@
 extends templates/layout
 
 block content 
-  h1 Header pug life
+  h1#example Header pug life
+
+
+  script.
+    System.import('/index.bundle.js')
+      .then(function(m){
+        console.log(m)
+      })
+    

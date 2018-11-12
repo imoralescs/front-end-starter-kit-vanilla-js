@@ -7,6 +7,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MODE = 'development';
 const enabledSourceMap = (MODE === 'development');
 
+const systemjs = {
+    parser: { 
+        system: false 
+    }
+};
+
 const pug = {
     test: /\.pug$/,
     use: ['html-loader?attrs=false', 'pug-html-loader']
@@ -40,7 +46,7 @@ const babel = {
     }
 }
 
-// Generate list page of HtmlWebpackPlugin
+// Generate list of 
 const jsList = fs
     .readdirSync(path.resolve(__dirname, 'src/js'))
     .filter(fileName => fileName.endsWith('.js'))
@@ -68,7 +74,7 @@ const config = {
         filename: '[name].bundle.js'
     },
     module: {
-        rules: [pug, sass, babel]
+        rules: [systemjs, pug, sass, babel]
     },
     plugins: [
         ...pages.map(page => {
@@ -79,7 +85,7 @@ const config = {
                 inject: false
             })
         }),
-        new ExtractTextPlugin('style.css')
+        new ExtractTextPlugin('css/style.css')
     ]
 };
 

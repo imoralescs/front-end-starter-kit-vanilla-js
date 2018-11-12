@@ -4,5 +4,12 @@ head
   meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
   meta(name='viewport', content='width=device-width, height=device-height, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible', content='ie-edge')
-  link(href='style.css', rel='stylesheet', type='text/css')
+  link(href='css/style.css', rel='stylesheet', type='text/css')
+  script(src='systemjs@2.1.1.bundle.js')
+  script.
+    if (typeof Promise === 'undefined')
+    document.write('<script src="promise-polyfill.bundle"><\\/script>');
+  script.
+    if (typeof fetch === 'undefined')
+    document.write('<script src="fetch-polyfill.bundle.js"><\\/script>');
 // END : /BASE/HEAD
