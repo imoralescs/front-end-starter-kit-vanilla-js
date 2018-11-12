@@ -32,28 +32,47 @@ const sass = {
     })
 };
 
+const babel = {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: {
+        loader: "babel-loader"
+    }
+}
+
+// Generate list page of HtmlWebpackPlugin
+const jsList = fs
+    .readdirSync(path.resolve(__dirname, 'src/js'))
+    .filter(fileName => fileName.endsWith('.js'))
+
+const jsListObject = jsList.map(js => {
+    let 
+        temp = js.split('.').slice(0, -1).join('.'),
+        tempObj = {};
+    tempObj[temp] = `./src/js/${js}`
+    return tempObj
+})
+
+const entries = Object.assign(...jsListObject);
+
 // Generate list page of HtmlWebpackPlugin
 const pages = fs
     .readdirSync(path.resolve(__dirname, 'src/pug'))
     .filter(fileName => fileName.endsWith('.pug'))
 
 const config = {
-    entry: './src/app.js',
+    mode: MODE,
+    entry: entries,
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js'
     },
     module: {
-        rules: [pug, sass]
+        rules: [pug, sass, babel]
     },
     plugins: [
-        /*new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'src/pug/index.pug',
-            inject: false
-        }),*/
         ...pages.map(page => {
-            const temp = page.split('.').slice(0, -1).join('.');
+            let temp = page.split('.').slice(0, -1).join('.');
             return new HtmlWebpackPlugin({
                 filename: `${temp}.html`,
                 template: `src/pug/${page}`,
