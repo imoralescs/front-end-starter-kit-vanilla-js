@@ -1,4 +1,6 @@
 import '../scss/style.scss'
+import { sayAbout } from './about'
+/*
 class DOM {
     constructor(selector) {
         let elements = document.querySelectorAll(selector);
@@ -40,3 +42,8 @@ class DOM {
 
 window.DOM = DOM;
 export default DOM ;
+*/
+
+console.log('index file')
+
+sayAbout();

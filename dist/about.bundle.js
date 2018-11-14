@@ -90,10 +90,11 @@
 /*!*************************!*\
   !*** ./src/js/about.js ***!
   \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: sayAbout */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("console.log('about');\n\n//# sourceURL=webpack:///./src/js/about.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"sayAbout\", function() { return sayAbout; });\nfunction sayAbout() {\n  console.log('about');\n  return true;\n}\n\n//# sourceURL=webpack:///./src/js/about.js?");
 
 /***/ })
 
