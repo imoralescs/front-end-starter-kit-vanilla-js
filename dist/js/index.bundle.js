@@ -86,18 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/js/about.js":
-/*!*************************!*\
-  !*** ./src/js/about.js ***!
-  \*************************/
-/*! exports provided: sayAbout */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"sayAbout\", function() { return sayAbout; });\nfunction sayAbout() {\n  alert('test');\n  return true;\n}\n\n//# sourceURL=webpack:///./src/js/about.js?");
-
-/***/ }),
-
 /***/ "./src/js/index.js":
 /*!*************************!*\
   !*** ./src/js/index.js ***!
@@ -106,7 +94,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _about__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./about */ \"./src/js/about.js\");\n\n\n/*\nclass DOM {\n    constructor(selector) {\n        let elements = document.querySelectorAll(selector);\n\t\tthis.length = elements.length;\n\t\tObject.assign(this, elements);\n    }\n    \n    each(callback) {\n        // convert this to Array to use for...of\n        for(let el of Array.from(this)) {\n            callback.call( el );\n        }\n\t\t// return this for chaining\n\t\treturn this;\n\t}\n\n\taddClass(className) {\n\t    return this.each(function() {\n\t    \tthis.classList.add(className);\n\t    });\n\t}\n\t\n\tremoveClass(className) {\n\t\treturn this.each(function() {\n\t\t\tthis.classList.remove(className);\n\t\t});\n\t}\n\t\n\thasClass(className) {\n\t\treturn this[0].classList.contains(className);\n\t}\n\t\n\ton(event, callback ) {\n\t    return this.each(function() {\n\t    \tthis.addEventListener(event, callback, false);\n\t    });\n\t}\n}\n\nwindow.DOM = DOM;\nexport default DOM ;\n*/\n\nconsole.log('index file');\nObject(_about__WEBPACK_IMPORTED_MODULE_1__[\"sayAbout\"])();\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_0__);\n\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ }),
 

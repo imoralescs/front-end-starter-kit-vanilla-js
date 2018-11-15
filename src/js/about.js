@@ -1,4 +1,4 @@
-export function sayAbout() {
-    alert('test')
+export default function sayAbout() {
+    console.log('test');
     return true;
 }

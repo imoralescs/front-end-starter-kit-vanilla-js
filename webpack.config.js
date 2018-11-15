@@ -1,23 +1,19 @@
-const path = require('path')
-const fs = require('fs')
-const util = require('util')
-const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const MODE = 'development'
-const enabledSourceMap = (MODE === 'development')
+const path = require('path');
+const fs = require('fs');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const MODE = 'development';
 
 const systemjs = {
-    parser: { 
-        system: false 
-    }
-}
+    parser: { system: false },
+};
 
 const pug = {
     test: /\.pug$/,
-    use: ['html-loader?attrs=false', 'pug-html-loader']
-}
+    use: ['html-loader?attrs=false', 'pug-html-loader'],
+};
 
 const sass = {
     test: /\.scss/,
@@ -27,59 +23,64 @@ const sass = {
             loader: 'css-loader',
             options: {
                 url: false,
-                sourceMap: enabledSourceMap,
-            }
+                sourceMap: MODE,
+            },
         },
         {
             loader: 'sass-loader',
             options: {
-                sourceMap: enabledSourceMap,
-            }
-        }]
-    })
-}
+                sourceMap: MODE,
+            },
+        }],
+    }),
+};
 
 const babel = {
     test: /\.js$/,
     exclude: /node_modules/,
     use: {
-        loader: "babel-loader"
-    }
-}
+        loader: 'babel-loader',
+    },
+};
 
-// Generate list of 
+const eslint = {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: 'eslint-loader',
+};
+
+// Generate list of
 const jsList = fs
     .readdirSync(path.resolve(__dirname, 'src/js'))
-    .filter(fileName => fileName.endsWith('.js'))
+    .filter(fileName => fileName.endsWith('.js'));
 
-const jsListObject = jsList.map(js => {
-    let 
-        temp = js.split('.').slice(0, -1).join('.'),
-        tempObj = {};
-    tempObj[temp] = `./src/js/${js}`
-    return tempObj
-})
+const jsListObject = jsList.map((js) => {
+    const temp = js.split('.').slice(0, -1).join('.');
+    const tempObj = {};
+    tempObj[temp] = `./src/js/${js}`;
+    return tempObj;
+});
 
-const entries = Object.assign(...jsListObject)
+const entries = Object.assign(...jsListObject);
 
 // Generate list page of HtmlWebpackPlugin
 const pages = fs
     .readdirSync(path.resolve(__dirname, 'src/pug'))
-    .filter(fileName => fileName.endsWith('.pug'))
+    .filter(fileName => fileName.endsWith('.pug'));
 
 const config = {
     mode: MODE,
     entry: entries,
     output: {
         path: path.resolve(__dirname, 'dist/js'),
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
     },
     module: {
-        rules: [systemjs, pug, sass, babel]
+        rules: [systemjs, pug, sass, babel, eslint],
     },
     plugins: [
-        ...pages.map(page => {
-            let temp = page.split('.').slice(0, -1).join('.');
+        ...pages.map((page) => {
+            const temp = page.split('.').slice(0, -1).join('.');
             return new HtmlWebpackPlugin({
                 filename: `../${temp}.html`,
                 template: `src/pug/${page}`,
@@ -90,13 +91,13 @@ const config = {
                     removeRedundantAttributes: true,
                     removeScriptTypeAttributes: true,
                     removeStyleLinkTypeAttributes: true,
-                    useShortDoctype: true
-                }
-            })
+                    useShortDoctype: true,
+                },
+            });
         }),
         new ExtractTextPlugin('../css/style.css'),
-        new CleanWebpackPlugin(['dist'])
-    ]
+        new CleanWebpackPlugin(['dist']),
+    ],
 };
 
-module.exports = config
+module.exports = config;

@@ -1,24 +1,23 @@
 {
-  "name": "vanilla-javascript-components",
+  "name": "front-end-starter-kit",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently 'npm run lint' 'npm run dev:webpack' 'nodemon ./server.js'",
-    "dev:webpack": "webpack --watch --mode development",
-    "lint": "eslint --ext .js src",
-    "prod": "webpack --mode production"
+    "dev": "concurrently 'npm run dev:webpack' 'nodemon ./server.js'",
+    "dev:webpack": "webpack --watch --mode=development",
+    "prod": "webpack --mode=production"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/imoralescs/vanilla-javascript-components.git"
+    "url": "git+https://github.com/imoralescs/front-end-starter-kit.git"
   },
   "author": "Israel Morales",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/imoralescs/vanilla-javascript-components/issues"
+    "url": "https://github.com/imoralescs/front-end-starter-kit/issues"
   },
-  "homepage": "https://github.com/imoralescs/vanilla-javascript-components#readme",
+  "homepage": "https://github.com/imoralescs/front-end-starter-kit#readme",
   "devDependencies": {
     "@babel/core": "^7.1.5",
     "@babel/preset-env": "^7.1.5",
@@ -28,7 +27,7 @@
     "css-loader": "^1.0.1",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-loader": "^2.1.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
