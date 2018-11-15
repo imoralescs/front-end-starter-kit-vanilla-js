@@ -1,4 +1,4 @@
 export function sayAbout() {
-    console.log('about')
+    alert('test')
     return true;
 }

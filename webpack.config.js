@@ -1,22 +1,23 @@
-const path = require('path');
-const fs = require('fs');
+const path = require('path')
+const fs = require('fs')
 const util = require('util')
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MODE = 'development';
-const enabledSourceMap = (MODE === 'development');
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const MODE = 'development'
+const enabledSourceMap = (MODE === 'development')
 
 const systemjs = {
     parser: { 
         system: false 
     }
-};
+}
 
 const pug = {
     test: /\.pug$/,
     use: ['html-loader?attrs=false', 'pug-html-loader']
-};
+}
 
 const sass = {
     test: /\.scss/,
@@ -36,7 +37,7 @@ const sass = {
             }
         }]
     })
-};
+}
 
 const babel = {
     test: /\.js$/,
@@ -59,7 +60,7 @@ const jsListObject = jsList.map(js => {
     return tempObj
 })
 
-const entries = Object.assign(...jsListObject);
+const entries = Object.assign(...jsListObject)
 
 // Generate list page of HtmlWebpackPlugin
 const pages = fs
@@ -70,7 +71,7 @@ const config = {
     mode: MODE,
     entry: entries,
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist/js'),
         filename: '[name].bundle.js'
     },
     module: {
@@ -80,13 +81,22 @@ const config = {
         ...pages.map(page => {
             let temp = page.split('.').slice(0, -1).join('.');
             return new HtmlWebpackPlugin({
-                filename: `${temp}.html`,
+                filename: `../${temp}.html`,
                 template: `src/pug/${page}`,
-                inject: false
+                inject: false,
+                minify: {
+                    collapseWhitespace: true,
+                    removeComments: true,
+                    removeRedundantAttributes: true,
+                    removeScriptTypeAttributes: true,
+                    removeStyleLinkTypeAttributes: true,
+                    useShortDoctype: true
+                }
             })
         }),
-        new ExtractTextPlugin('css/style.css')
+        new ExtractTextPlugin('../css/style.css'),
+        new CleanWebpackPlugin(['dist'])
     ]
 };
 
-module.exports = config;
+module.exports = config

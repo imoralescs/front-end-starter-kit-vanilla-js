@@ -1,3 +1,4 @@
+/* eslint-disable */
 // https://github.com/github/fetch
 var support = {
     searchParams: 'URLSearchParams' in self,
