@@ -23,14 +23,11 @@ const sass = {
             loader: 'css-loader',
             options: {
                 url: false,
-                sourceMap: MODE,
             },
         },
         {
             loader: 'sass-loader',
-            options: {
-                sourceMap: MODE,
-            },
+            options: {},
         }],
     }),
 };
