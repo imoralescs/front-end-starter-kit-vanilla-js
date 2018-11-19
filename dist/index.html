@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>FED-TODO: *** CHANGE THIS TITLE ***</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie-edge"><link href="css/style.css" rel="stylesheet"><script src="js/systemjs@2.1.1.bundle.js"></script><script>if(typeof Promise === 'undefined') {
+<!-- START : /TEMPLATES/LAYOUT--><!DOCTYPE html><html><!-- START : /BASE/HEAD--><head><title>FED-TODO: *** CHANGE THIS TITLE ***</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie-edge"><link href="css/style.css" rel="stylesheet" type="text/css"><script src="js/systemjs@2.1.1.bundle.js" defer></script><script>if(typeof Promise === 'undefined') {
   var script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = 'promise-polyfill.bundle';    
@@ -12,4 +12,22 @@ if(typeof fetch === 'undefined') {
   script.src = 'fetch-polyfill.bundle.js';    
 
   document.getElementsByTagName('head')[0].appendChild(script);
-}</script></head><body><h2>Static</h2><h1>Home Page</h1><a id="openHomeModal" href="#modal">Open Home Modal</a><div class="modal" id="#homeModal"><div class="modal__content"><h2>Info Details</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p><button id="#closeHomeModal">Close</button></div></div><script>System.import('/js/index.bundle.js')</script></body></html>
+}</script><link href="js/../css/style.css" rel="stylesheet"></head><!-- END : /BASE/HEAD--><body><h1>Home Page</h1><a id="openHomeModal" href="#modal">Open Home Modal</a><div class="modal" id="homeModal"><div class="modal__content"><h2>Info Details</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p><button id="closeHomeModal">Close</button></div><script>document.addEventListener("DOMContentLoaded", function() {
+  System.import('/js/modal.bundle.js')
+    .then(function(modules){
+      let $modal = new modules.default({
+        modal: '#homeModal',
+        modalOpen: '#openHomeModal',
+        modalClose: '#closeHomeModal'
+      });
+      
+      $modal.modalOpen.on('click', function(event){
+        event.preventDefault()
+        $modal.modal.addClass('is-visible')
+      });
+
+      $modal.modalClose.on('click', function(event){ 
+        $modal.modal.removeClass('is-visible')
+      });
+  });
+});</script></div><script type="text/javascript" src="js/about.bundle.js"></script><script type="text/javascript" src="js/domanipulation.bundle.js"></script><script type="text/javascript" src="js/fetch-polyfill.bundle.js"></script><script type="text/javascript" src="js/getElement.bundle.js"></script><script type="text/javascript" src="js/index.bundle.js"></script><script type="text/javascript" src="js/modal.bundle.js"></script><script type="text/javascript" src="js/promise-polyfill.bundle.js"></script><script type="text/javascript" src="js/queryElements.bundle.js"></script><script type="text/javascript" src="js/systemjs@2.1.1.bundle.js"></script></body></html><!-- END : /TEMPLATES/LAYOUT-->

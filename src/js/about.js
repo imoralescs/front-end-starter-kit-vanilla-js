@@ -1,4 +1,5 @@
 export default function sayAbout() {
-    console.log('test');
-    return true;
+  // eslint-disable-next-line no-console
+  console.log('test');
+  return true;
 }

@@ -81,20 +81,20 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/about.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/domanipulation.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/js/about.js":
-/*!*************************!*\
-  !*** ./src/js/about.js ***!
-  \*************************/
+/***/ "./src/js/domanipulation.js":
+/*!**********************************!*\
+  !*** ./src/js/domanipulation.js ***!
+  \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return sayAbout; });\nfunction sayAbout() {\n  // eslint-disable-next-line no-console\n  console.log('test');\n  return true;\n}\n\n//# sourceURL=webpack:///./src/js/about.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar DOManipulation =\n/*#__PURE__*/\nfunction () {\n  function DOManipulation() {\n    _classCallCheck(this, DOManipulation);\n\n    this.init = 'Class DOManipulation has initialized.';\n  }\n\n  _createClass(DOManipulation, [{\n    key: \"each\",\n    value: function each(callback) {\n      // convert this to Array to use for...of\n      var _arr = Array.from(this);\n\n      for (var _i = 0; _i < _arr.length; _i++) {\n        var el = _arr[_i];\n        callback.call(el);\n      } // return this for chaining\n\n\n      return this;\n    }\n  }, {\n    key: \"addClass\",\n    value: function addClass(className) {\n      return this.each(function addClass() {\n        this.classList.add(className);\n      });\n    }\n  }, {\n    key: \"removeClass\",\n    value: function removeClass(className) {\n      return this.each(function removeClass() {\n        this.classList.remove(className);\n      });\n    }\n  }, {\n    key: \"hasClass\",\n    value: function hasClass(className) {\n      return this[0].classList.contains(className);\n    }\n  }, {\n    key: \"on\",\n    value: function on(event, callback) {\n      return this.each(function on() {\n        this.addEventListener(event, callback, false);\n      });\n    }\n  }, {\n    key: \"checkInit\",\n    value: function checkInit() {\n      return this.init;\n    }\n  }]);\n\n  return DOManipulation;\n}();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (DOManipulation);\n\n//# sourceURL=webpack:///./src/js/domanipulation.js?");
 
 /***/ })
 

@@ -12,7 +12,17 @@ const systemjs = {
 
 const pug = {
     test: /\.pug$/,
-    use: ['html-loader?attrs=false', 'pug-html-loader'],
+    use:[{
+        loader: 'html-loader',
+        options: {
+            minimize: false,
+            removeComments: false,
+            collapseWhitespace: false
+        }
+    },
+    {
+        loader: 'pug-html-loader'
+    }]
 };
 
 const sass = {
@@ -81,15 +91,7 @@ const config = {
             return new HtmlWebpackPlugin({
                 filename: `../${temp}.html`,
                 template: `src/pug/${page}`,
-                inject: false,
-                minify: {
-                    collapseWhitespace: true,
-                    removeComments: true,
-                    removeRedundantAttributes: true,
-                    removeScriptTypeAttributes: true,
-                    removeStyleLinkTypeAttributes: true,
-                    useShortDoctype: true,
-                },
+                minify: false
             });
         }),
         new ExtractTextPlugin('../css/style.css'),
