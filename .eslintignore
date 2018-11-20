@@ -3,3 +3,4 @@
 dist/*
 **/*.json
 webpack.config.js
+package.json

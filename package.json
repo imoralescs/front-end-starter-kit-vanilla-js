@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently 'npm run dev:webpack' 'nodemon ./server.js'",
-    "dev:webpack": "webpack --watch --mode=development",
-    "prod": "webpack --mode=production"
+    "dev:webpack": "webpack --watch --colors --mode=development",
+    "prod": "webpack --mode production",
+    "_comment": "On debug, you can replace index.js with other module. To debug, on Chrome browser chrome://inspect/#devices",
+    "debug": "node --inspect --debug-brk ./server.js"
   },
   "repository": {
     "type": "git",

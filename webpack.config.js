@@ -91,6 +91,7 @@ const config = {
             return new HtmlWebpackPlugin({
                 filename: `../${temp}.html`,
                 template: `src/pug/${page}`,
+                inject: false,
                 minify: false
             });
         }),

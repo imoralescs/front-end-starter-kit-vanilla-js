@@ -12,6 +12,7 @@ mixin modal(modalId, closeId, openId)
       document.addEventListener("DOMContentLoaded", function() {
         System.import('/js/modal.bundle.js')
           .then(function(modules){
+            console.log(modules)
             let $modal = new modules.default({
               modal: '#{id}',
               modalOpen: '#{idOpen}',
